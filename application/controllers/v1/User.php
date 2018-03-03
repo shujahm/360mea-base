@@ -55,7 +55,7 @@ class User extends CI_Controller
         if (check_jwt_cookie($this->auth["service_name"], $this->auth["cookie_name"])) {
             // check if the user_id is provided
             if (empty($_POST['user_id'])) {
-                echo json_encode(array(
+                json_output(BAD_DATA, array(
                     "code" => BAD_DATA,
                     "message" => "user_id missing from input params"
                 ));
@@ -64,7 +64,7 @@ class User extends CI_Controller
             $user_id = $_POST['user_id'];
             $user_details = $this->UserModel->getUserDetails($user_id);
             if (isset($user_details)) {
-                echo json_encode(array(
+                json_output(SUCCESS, array(
                     "code" => SUCCESS,
                     "message" => "User profile details fetched",
                     "data" => [
@@ -78,7 +78,7 @@ class User extends CI_Controller
                 return;
             }
         } else {
-            echo json_encode(array(
+            json_output(UNAUTHORIZED, array(
                 "code" => UNAUTHORIZED,
                 "message" => "Invalid cookies"
             ));

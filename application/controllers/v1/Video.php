@@ -78,13 +78,13 @@ class Video extends CI_Controller
                 }
             }
             // returning data
-            echo json_encode(array(
+            json_output(SUCCESS, array(
                 "code" => SUCCESS,
                 "message" => "Trending Video list fetched",
                 "data" => $trending_360_video));
             return;
         } else {
-            echo json_encode(array(
+            json_output(UNAUTHORIZED, array(
                 "code" => UNAUTHORIZED,
                 "message" => "Invalid cookies"
             ));
@@ -156,13 +156,13 @@ class Video extends CI_Controller
                 }
             }
             // returning data
-            echo json_encode(array(
+            json_output(SUCCESS, array(
                 "code" => SUCCESS,
                 "message" => "Channel list fetched",
                 "data" => $channel_list));
             return;
         } else {
-            echo json_encode(array(
+            json_output(UNAUTHORIZED, array(
                 "code" => UNAUTHORIZED,
                 "message" => "Invalid cookies"
             ));
